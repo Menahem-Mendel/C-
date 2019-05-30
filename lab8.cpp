@@ -19,11 +19,13 @@ int main()
 		d[SPACE] = {0};
 	char file[50];
 
+	cout << "inputA.txt" << endl;
 	cin >> file;
 	fileInArray(file, a);
 	cout << "a" << endl;
 	printArray(a);
 
+	cout << "inputB.txt" << endl;
 	cin >> file;
 	fileInArray(file, b);
 	cout << "b" << endl;
