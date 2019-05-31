@@ -1,63 +1,79 @@
 #include <iostream>
 #include <fstream>
-#include "lab8.hpp"
+#include "lab9.hpp"
 
 using namespace std;
 
+int setSizeOfArr(int **);
+void createArray(int **, int);
+void deleteArray(int **, int);
+int inputValues(int **, int);
+
 int main()
 {
-	int a[SPACE] = {0},
-		b[SPACE] = {0},
-		c[SPACE * 2] = {0},
-		d[SPACE * 2] = {0};
-	char file[50];
+	char choice;
+	int **arr;
+	int size;
+	int **pointer;
 
+	size = 0;
+
+	cout << "\nyou want terminal or file? t or f" << endl;
+	cin >> choice;
+	if (choice == 'f')
 	{
-		cout << "\ncopy this path: lab8/inputA.txt" << endl;
-		cin >> file;
-		if (fileInArray(file, a) == 0)
-		{
-			{
-				cout << "+++++++++++++++++++++++++			a 			+++++++++++++++++++++++++" << endl;
-				printArray(a, SPACE);
-			}
+	}
+	else
+	{
+		if (choice != 't')
+			cout << "\ni'll take it like terminal" << endl;
 
-			{
-				copyodd(a, c);
-				copyeven(a, d);
-			}
-		}
+		size = setSizeOfArr(arr);
+
+		createArray(arr, size);
+
+		**pointer = inputValues(arr, size);
+
+		cout << size << endl;
 	}
 
-	{
-		cout << "\ncopy this path: lab8/inputB.txt" << endl;
-		cin >> file;
-		if (fileInArray(file, b) == 0)
-		{
-			{
-				cout << "+++++++++++++++++++++++++			b 			+++++++++++++++++++++++++" << endl;
-				printArray(b, SPACE);
-			}
-
-			{
-				copyodd(b, c);
-				copyeven(b, d);
-			}
-		}
-	}
-
-	{
-		{
-			cout << "+++++++++++++++++++++++++			c 			+++++++++++++++++++++++++" << endl;
-			printArray(c, SPACE * 2);
-		}
-
-		{
-			cout << "+++++++++++++++++++++++++			d 			+++++++++++++++++++++++++" << endl;
-			printArray(d, SPACE * 2);
-		}
-	}
-
+	deleteArray(arr, size);
 	return 0;
 }
 
+int setSizeOfArr(int **arr)
+{
+	int sizearr;
+
+	sizearr = 0;
+
+	while (sizearr < 7)
+	{
+		cin >> sizearr;
+
+		if (sizearr < 7)
+			cout << "sizearr < 7!" << endl;
+	}
+	return sizearr;
+}
+
+void deleteArray(int **arr, int size)
+{
+	for (int i = 0; i < size; ++i)
+		delete[] arr[i];
+	delete[] arr;
+}
+
+void createArray(int **array, int size)
+{
+	int i_arr;
+
+	array = new int *[size];
+
+	for (i_arr = 0; i_arr < size; ++i_arr)
+		array[i_arr] = new int[size];
+}
+
+int inputValues(int **, int)
+{
+}
