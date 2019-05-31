@@ -1,52 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <cctype>
+#include "lab8.hpp"
 
 using namespace std;
-
-void fileInArray(char[], int[]);
-void copyeven(int[], int[]);
-void copyodd(int[], int[]);
-void printArray(int[]);
-
-#define SPACE 20
-
-int main()
-{
-	int a[SPACE] = {0},
-		b[SPACE] = {0},
-		c[SPACE] = {0},
-		d[SPACE] = {0};
-	char file[50];
-
-	cout << "inputA.txt" << endl;
-	cin >> file;
-	fileInArray(file, a);
-	cout << "a" << endl;
-	printArray(a);
-
-	cout << "inputB.txt" << endl;
-	cin >> file;
-	fileInArray(file, b);
-	cout << "b" << endl;
-	printArray(b);
-	cout << endl;
-
-	copyodd(a, c);
-	copyodd(b, c);
-
-	copyeven(a, d);
-	copyeven(b, d);
-
-	cout << "c" << endl;
-	printArray(c);
-
-	cout << "d" << endl;
-	printArray(d);
-	cout << endl;
-
-	return 0;
-}
 
 void copyodd(int from[], int to[])
 {
@@ -82,7 +38,7 @@ void copyeven(int from[], int to[])
 	}
 }
 
-void fileInArray(char file[], int to[])
+int fileInArray(char file[], int to[])
 {
 	int index_fia;
 	ifstream input;
@@ -95,19 +51,26 @@ void fileInArray(char file[], int to[])
 		{
 			input >> to[index_fia];
 		}
+		input.close();
+		return 0;
 	}
 	else
-		cout << "error file not opened" << endl;
-
-	input.close();
+		cout << "error file not opened\n"
+			 << endl;
+	return 1;
 }
 
-void printArray(int arr[])
+void printArray(int arr[], int limit)
 {
 	int index;
 
-	for (index = 0; index < SPACE && arr[index] != 0; index++)
+	for (index = 0; index < limit && arr[index] != 0; index++)
 	{
 		cout << "arr[" << index << "] = " << arr[index] << endl;
+	}
+	if (index == 0)
+	{
+		cout << "this file does not contain numeric values\n"
+			 << endl;
 	}
 }
