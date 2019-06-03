@@ -1,79 +1,50 @@
+// Составьте программу, которая осуществляет обработку входных данных с помощью двумерных массивов.
+// При выполнении лабораторной работы следует учесть следующее :
+// 1. Дать пользователю возможность выбора: вводить входные данные с консоли, вводить их из файла;
+// в случае ввода с консоли продемонстрировать возможность пере напрямлення потока ввода / вывода на файл .
+// 2. При программировании однотипных подзадач (сортировка, ввод / вывод массивов, нахождения суммы столбца матрицы и т.д.) следует оформлять их в виде функций.
+
+// Вариант 4. Введите матрицу А размерностью(n x n),
+// где n ≥ 7.
+// Выполните следующие задачи:
+// 1. найдите максимальный элемент из всех элементов матрицы, оба индекса которых парные;
+// 2. найдите минимальный элемент главной диагонали;
+// 3. приведите в порядок по возрастанию значения элементов строки, где находится минимальный элемент.
+
 #include <iostream>
 #include <fstream>
 #include "lab9.hpp"
 
 using namespace std;
 
-int setSizeOfArr(int **);
-void createArray(int **, int);
-void deleteArray(int **, int);
-int inputValues(int **, int);
-
 int main()
 {
-	char choice;
-	int **arr;
-	int size;
-	int **pointer;
+	int _size;			  // size of _array[_size * _size]
+	char _inputselection; // 1 - terminal 0 - file
+	int **_array;		  // _array of numbers[][]
 
-	size = 0;
+	_size = array_size();
 
-	cout << "\nyou want terminal or file? t or f" << endl;
-	cin >> choice;
-	if (choice == 'f')
+	cout << "Do you want to enter data from the console? \"T\" - true, \"F\" - false " << endl;
+	cin >> _inputselection;
+
+	_array = array_constructor(_array, _size);
+
+	if (_inputselection == 'T' || _inputselection == 't')
 	{
+		inputT(_array, _size);
 	}
 	else
 	{
-		if (choice != 't')
-			cout << "\ni'll take it like terminal" << endl;
-
-		size = setSizeOfArr(arr);
-
-		createArray(arr, size);
-
-		**pointer = inputValues(arr, size);
-
-		cout << size << endl;
+		output_to_file();
+		inputF(_array, _size);
 	}
+	max_elemnt_indexes_even(_array, _size);
+	int i_string = min_element_main_diagonal(_array, _size);
 
-	deleteArray(arr, size);
+	bubblesort(_array, i_string, _size);
+	printArray(_array, _size);
+
+	array_destructor(_array, _size);
 	return 0;
-}
-
-int setSizeOfArr(int **arr)
-{
-	int sizearr;
-
-	sizearr = 0;
-
-	while (sizearr < 7)
-	{
-		cin >> sizearr;
-
-		if (sizearr < 7)
-			cout << "sizearr < 7!" << endl;
-	}
-	return sizearr;
-}
-
-void deleteArray(int **arr, int size)
-{
-	for (int i = 0; i < size; ++i)
-		delete[] arr[i];
-	delete[] arr;
-}
-
-void createArray(int **array, int size)
-{
-	int i_arr;
-
-	array = new int *[size];
-
-	for (i_arr = 0; i_arr < size; ++i_arr)
-		array[i_arr] = new int[size];
-}
-
-int inputValues(int **, int)
-{
 }

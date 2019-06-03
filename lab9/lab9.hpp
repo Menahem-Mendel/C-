@@ -1,0 +1,11 @@
+int array_size();
+void inputT(int **, int);
+void inputF(int **, int);
+int **array_constructor(int **, int);
+void array_destructor(int **, int);
+void printArray(int **, int);
+void max_elemnt_indexes_even(int **, int);
+void output_to_file();
+int min_element_main_diagonal(int **, int);
+void bubblesort(int **, int, int);
+void swap(int*, int*);
