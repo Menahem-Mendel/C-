@@ -20,7 +20,7 @@ int main()
 	int _array[ARRAYSIZE] = {0};
 
 	// variable definition
-	_size = 20;
+	_size = 10;
 	_from = 0;
 	_to = 9;
 
