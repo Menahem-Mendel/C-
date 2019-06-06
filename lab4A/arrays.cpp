@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include "windows.h" 
 
 #include "lab4.hpp"
 
@@ -14,6 +15,7 @@ void random_fill(int _array[], int _size, int min, int max)
 
 	for (_index = 0; _index < MIN(_size, ARRAYSIZE); _index++)
 	{
+		Sleep(1);
 		_array[_index] = DIAPASONE(min, max);
 	}
 }
@@ -50,4 +52,13 @@ void print_array_diapasone(int _array[], int _from, int _to)
 	for (_index = _from; _index < MIN(_to, ARRAYSIZE); _index++)
 		cout << _array[_index] << " ";
 	cout << endl;
+}
+
+void copy(int A1[], int A2[], int i_left, int i_right)
+{
+	while (i_left <= i_right)
+	{
+		A1[i_left] = A2[i_left];
+		i_left++;
+	}
 }

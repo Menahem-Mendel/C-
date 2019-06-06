@@ -29,8 +29,8 @@ void selection_sort(int _array[], int _size)
 	for (i_index = 0; i_index < _size; i_index++)
 	{
 		// вывод на консоль
-		cout << "__________________________________cover " << ++_cover << endl;
-		print_array(_array, _size);
+		// cout << "__________________________________cover " << ++_cover << endl;
+		// print_array(_array, _size);
 
 		min_index = i_index;
 
@@ -93,12 +93,12 @@ void quick_sort(int _array[], int i_left, int i_right)
 	swap(&_array[i_left], &_array[_pivot]); // вернуть средний элемент на место
 
 	// вывод на консоль
-	cout << "__________________________________cover " << ++_cover << endl
-		 << "left subset\t= ";
-	print_array_diapasone(_array, i_left, _pivot);
-	cout << "array[pivot]\t= " << _array[_pivot] << endl
-		 << "right subset\t= ";
-	print_array_diapasone(_array, _pivot + 1, i_right + 1);
+	// cout << "__________________________________cover " << ++_cover << endl
+	// 	 << "left subset\t= ";
+	// print_array_diapasone(_array, i_left, _pivot);
+	// cout << "array[pivot]\t= " << _array[_pivot] << endl
+	// 	 << "right subset\t= ";
+	// print_array_diapasone(_array, _pivot + 1, i_right + 1);
 
 	quick_sort(_array, i_left, _pivot - 1);  // сортировать правую сторону
 	quick_sort(_array, _pivot + 1, i_right); // сортировать левую сторону
@@ -112,8 +112,8 @@ void heap_sort(int _array[], int _size)
 		heapify(_array, _size, _index);
 
 		// вывод на консоль
-		cout << "__________________________________cover " << ++_cover << endl;
-		print_array(_array, _size);
+		// cout << "__________________________________cover " << ++_cover << endl;
+		// print_array(_array, _size);
 	}
 
 	for (int _index = _size - 1; _index >= 0; _index--)
@@ -123,8 +123,8 @@ void heap_sort(int _array[], int _size)
 		heapify(_array, _index, 0);
 
 		// вывод на консоль
-		cout << "__________________________________cover " << ++_cover <<  endl;
-		print_array(_array, _size);
+		// cout << "__________________________________cover " << ++_cover <<  endl;
+		// print_array(_array, _size);
 	}
 }
 

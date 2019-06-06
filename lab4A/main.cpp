@@ -1,3 +1,21 @@
+// разработать программу, которая реализует три алгоритма сортировки массивов по методу:
+// 1. быстрой сортировки;
+// 2. сортировки выбором;
+// 3. пирамидальной сортировки
+
+// выходной массив - массив целых чисел, который загружается из текстового файла.
+// Для формирования текстового файла написать отдельную программу (или функцию в меню программы).
+// числа для записи в файл избираются случайным образом из диапазона, который вводится по запросу с клавиатуры.ъ
+
+// результирующий отсортированный массив записать в другой файл (на экран результирующий массив выводить не надо).
+
+// рассмотреть тестовые примеры с размерами массивов 100, 500, 1000, 5000, 10000, 30000, 50000 элементов.
+// программно определить время работы каждого из алгоритмов на каждом из тестовых примеров с различными размерами массивов.
+// для каждого из размеров массива рассмотреть три случая исходных данных:
+// 1. массив случайных чисел - средний случай;
+// 2. отсортированный массив - лучший вариант;
+// 3. массив, отсортированный в обратном порядке (по убыванию) - худший случай.
+
 #include <iostream>
 #include <ctime>
 
@@ -8,44 +26,48 @@ using namespace std;
 int main()
 {
 	// variable initialization
-	time_t _start,
-		_end;
-
 	int _size,
 		_from,
 		_to;
 
-	char output[] = "lab4A/output.txt";
-	char input[] = "lab4A/input.txt";
+	char output[] = "lab4A/output.txt",
+		 input[] = "lab4A/input.txt";
+
 	int _array[ARRAYSIZE] = {0};
 
 	// variable definition
-	_size = 10;
+	_size = 50000;
 	_from = 0;
-	_to = 9;
-
-	// start
-	_start = clock();
+	_to = 1000;
 
 	// fill array with values
 	// random_fill(_array, _size, _from, _to);
 	// ascending_fill(_array, _size);
-	// descending_fill(_array, _size);
-	file_fill(_array, _size, input);
-	cout << "start =\t";
-	print_array(_array, _size);
+	descending_fill(_array, _size);
+
+	// file_fill(_array, _size, input);
+	// cout << "start =\t";
+	// print_array(_array, _size);
 
 	// sort
+	// heap_sort(_array, _size);
+	cout << "heap_sort" << endl;
+	duration_run(heap_sort, _array, _size);
+	cout << endl;
+
 	// quick_sort(_array, 0, _size - 1);
+	cout << "quick_sort" << endl;
+	duration_run__diapasone(quick_sort, _array, 0, _size - 1);
+	cout << endl;
+
 	// selection_sort(_array, _size);
-	heap_sort(_array, _size);
-	cout << "end =\t";
-	print_array(_array, _size);
+	cout << "selection_sort" << endl;
+	duration_run(selection_sort, _array, _size);
+	cout << endl;
+
+	// cout << "end =\t";
+	// print_array(_array, _size);
+
 	file_out(_array, _size, output);
-
-	// end
-	_end = clock() - _start;
-
-	cout << "the program was running " << (double)_end / CLOCKS_PER_SEC << " seconds" << endl;
 	return 0;
 }
