@@ -14,8 +14,8 @@ void file_out(int _array[], int _size, char _file_name[])
 
 	if (output.is_open())
 	{
-		for (_index = 0; _index < _size; _index++)
-			output << "array[" << _index << "] = " << _array[_index] << endl;
+		for (_index = 0; _index < MIN(_size, ARRAYSIZE); _index++)
+			output << _array[_index] << endl;
 	}
 	else
 	{
@@ -28,14 +28,13 @@ void file_out(int _array[], int _size, char _file_name[])
 void file_fill(int _array[], int _size, char _file_name[])
 {
 	int _index;
-	int j_index;
+	
 	ifstream input;
-
 	input.open(_file_name);
 
 	if (input.is_open())
 	{
-		for (_index = 0; _index < _size && !input.eof(); _index++)
+		for (_index = 0; _index < MIN(_size, ARRAYSIZE) && !input.eof(); _index++)
 		{
 			input >> _array[_index];
 		}

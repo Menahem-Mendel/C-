@@ -1,7 +1,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
-#include "windows.h" 
+#include "windows.h"
 
 #include "lab4.hpp"
 

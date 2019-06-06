@@ -27,8 +27,8 @@ int main()
 {
 	// variable initialization
 	int _size,
-		_from,
-		_to;
+		min_element,
+		max_element;
 
 	char output[] = "lab4A/output.txt",
 		 input[] = "lab4A/input.txt";
@@ -36,17 +36,19 @@ int main()
 	int _array[ARRAYSIZE] = {0};
 
 	// variable definition
-	_size = 50000;
-	_from = 0;
-	_to = 1000;
+	_size = 100;
+	min_element = 0;
+	max_element = 1000;
 
-	// fill array with values
-	// random_fill(_array, _size, _from, _to);
-	// ascending_fill(_array, _size);
-	descending_fill(_array, _size);
+	// заполнение массива
+	// random_fill(_array, _size, min_element, max_element); // рандомно
+	// ascending_fill(_array, _size);						  // по возрастанию
+	 descending_fill(_array, _size);						  // по убыванию
 
-	// file_fill(_array, _size, input);
-	// cout << "start =\t";
+	file_out(_array, _size, input);
+	file_fill(_array, _size, input);
+
+	// cout << "before =\t";
 	// print_array(_array, _size);
 
 	// sort
@@ -65,9 +67,10 @@ int main()
 	duration_run(selection_sort, _array, _size);
 	cout << endl;
 
-	// cout << "end =\t";
+	// cout << "after =\t";
 	// print_array(_array, _size);
 
+	heap_sort(_array, _size);
 	file_out(_array, _size, output);
 	return 0;
 }
