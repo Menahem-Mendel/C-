@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void duration_run(void (*sort)(int[], int), int _array[], int _size)
+int duration_run(void (*sort)(int[], int), int _array[], int _size)
 {
 	int array_copy[ARRAYSIZE] = {0};
 
@@ -23,9 +23,11 @@ void duration_run(void (*sort)(int[], int), int _array[], int _size)
 	cout << "the program was running\t" << chrono::duration_cast<chrono::milliseconds>(_end - _start).count() << " milliseconds" << endl;
 	cout << "the program was running\t" << chrono::duration_cast<chrono::microseconds>(_end - _start).count() << " microseconds" << endl;
 	cout << "the program was running\t" << chrono::duration_cast<chrono::nanoseconds>(_end - _start).count() << " nanoseconds" << endl;
+
+	return (int)chrono::duration_cast<chrono::milliseconds>(_end - _start).count();
 }
 
-void duration_run__diapasone(void (*sortq)(int[], int, int), int _array[], int i_left, int i_right)
+int duration_run__diapasone(void (*sortq)(int[], int, int), int _array[], int i_left, int i_right)
 {
 	int array_copy[ARRAYSIZE] = {0};
 
@@ -43,4 +45,6 @@ void duration_run__diapasone(void (*sortq)(int[], int, int), int _array[], int i
 	cout << "the program was running\t" << chrono::duration_cast<chrono::milliseconds>(_end - _start).count() << " milliseconds" << endl;
 	cout << "the program was running\t" << chrono::duration_cast<chrono::microseconds>(_end - _start).count() << " microseconds" << endl;
 	cout << "the program was running\t" << chrono::duration_cast<chrono::nanoseconds>(_end - _start).count() << " nanoseconds" << endl;
+
+	return (int)chrono::duration_cast<chrono::milliseconds>(_end - _start).count();
 }

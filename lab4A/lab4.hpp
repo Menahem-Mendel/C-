@@ -22,6 +22,6 @@ void file_out(int[], int, char[]);
 void file_fill(int[], int, char[]);
 
 // speed.cpp
-void duration_run(void (*)(int[], int), int[], int);
-void duration_run__diapasone(void (*)(int[], int, int), int[], int, int);
+int duration_run(void (*)(int[], int), int[], int);
+int duration_run__diapasone(void (*)(int[], int, int), int[], int, int);
 void copy(int[], int[], int, int);

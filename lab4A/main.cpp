@@ -36,14 +36,14 @@ int main()
 	int _array[ARRAYSIZE] = {0};
 
 	// variable definition
-	_size = 100;
+	_size = 30000;
 	min_element = 0;
 	max_element = 1000;
 
 	// заполнение массива
 	// random_fill(_array, _size, min_element, max_element); // рандомно
-	// ascending_fill(_array, _size);						  // по возрастанию
-	 descending_fill(_array, _size);						  // по убыванию
+	ascending_fill(_array, _size);						 // по возрастанию
+	// descending_fill(_array, _size); 						 // по убыванию
 
 	file_out(_array, _size, input);
 	file_fill(_array, _size, input);
@@ -52,9 +52,9 @@ int main()
 	// print_array(_array, _size);
 
 	// sort
-	// heap_sort(_array, _size);
-	cout << "heap_sort" << endl;
-	duration_run(heap_sort, _array, _size);
+	// selection_sort(_array, _size);
+	cout << "selection_sort" << endl;
+	duration_run(selection_sort, _array, _size);
 	cout << endl;
 
 	// quick_sort(_array, 0, _size - 1);
@@ -62,9 +62,9 @@ int main()
 	duration_run__diapasone(quick_sort, _array, 0, _size - 1);
 	cout << endl;
 
-	// selection_sort(_array, _size);
-	cout << "selection_sort" << endl;
-	duration_run(selection_sort, _array, _size);
+	// heap_sort(_array, _size);
+	cout << "heap_sort" << endl;
+	duration_run(heap_sort, _array, _size);
 	cout << endl;
 
 	// cout << "after =\t";

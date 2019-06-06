@@ -1,7 +1,6 @@
 #include <iostream>
 #include <random>
 #include <ctime>
-#include "windows.h"
 
 #include "lab4.hpp"
 
@@ -15,7 +14,6 @@ void random_fill(int _array[], int _size, int min, int max)
 
 	for (_index = 0; _index < MIN(_size, ARRAYSIZE); _index++)
 	{
-		Sleep(1);
 		_array[_index] = DIAPASONE(min, max);
 	}
 }

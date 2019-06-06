@@ -34,7 +34,7 @@ void selection_sort(int _array[], int _size)
 
 		min_index = i_index;
 
-		for (j_index = i_index; j_index < _size; j_index++)
+		for (j_index = i_index + 1; j_index < _size; j_index++)
 		{
 			if (_array[j_index] < _array[min_index])
 			{
