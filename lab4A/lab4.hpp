@@ -7,6 +7,8 @@
 void random_fill(int[], int, int, int);
 void ascending_fill(int[], int);
 void descending_fill(int[], int);
+void print_array(int[], int);
+void print_array_diapasone(int[], int, int);
 
 // sort_algorithms.cpp
 void heap_sort(int[], int);

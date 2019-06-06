@@ -5,8 +5,6 @@
 
 using namespace std;
 
-void print_array(int[], int);
-
 int main()
 {
 	// variable initialization
@@ -21,32 +19,29 @@ int main()
 
 	// variable definition
 	_size = 10;
-	_from = 100;
-	_to = 110;
-	_start = clock();
+	_from = 0;
+	_to = 9;
 
 	// start
-	descending_fill(_array, _size);
+	_start = clock();
+
+	// fill array with values
+	random_fill(_array, _size, _from, _to);
+	// ascending_fill(_array, _size);
+	// descending_fill(_array, _size);	
+	cout << "start =\t";
 	print_array(_array, _size);
 
-	cout << endl;
-
+	// sort
 	// quick_sort(_array, 0, _size - 1);
 	// selection_sort(_array, _size);
 	heap_sort(_array, _size);
+	cout << "end =\t";
 	print_array(_array, _size);
-	// end
 
+	// end
 	_end = clock() - _start;
 
 	cout << "the program was running " << (double)_end / CLOCKS_PER_SEC << " seconds" << endl;
 	return 0;
-}
-
-void print_array(int _array[], int _size)
-{
-	int _index;
-
-	for (_index = 0; _index < MIN(_size, ARRAYSIZE); _index++)
-		cout << "_array[" << _index << "] = " << _array[_index] << endl;
 }

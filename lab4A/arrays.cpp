@@ -33,3 +33,21 @@ void descending_fill(int _array[], int _size)
 	for (_index = 0; _index < MIN(_size, ARRAYSIZE); _index++)
 		_array[_index] = MIN(_size, ARRAYSIZE) - _index - 1;
 }
+
+void print_array(int _array[], int _size)
+{
+	int _index;
+
+	for (_index = 0; _index < MIN(_size, ARRAYSIZE); _index++)
+		cout << _array[_index] << " ";
+	cout << endl;
+}
+
+void print_array_diapasone(int _array[], int _from, int _to)
+{
+	int _index;
+
+	for (_index = _from; _index < MIN(_to, ARRAYSIZE); _index++)
+		cout << _array[_index] << " ";
+	cout << endl;
+}
