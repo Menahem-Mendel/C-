@@ -15,10 +15,12 @@ int main()
 		_from,
 		_to;
 
+	char output[] = "lab4A/output.txt";
+	char input[] = "lab4A/input.txt";
 	int _array[ARRAYSIZE] = {0};
 
 	// variable definition
-	_size = 10;
+	_size = 20;
 	_from = 0;
 	_to = 9;
 
@@ -26,9 +28,10 @@ int main()
 	_start = clock();
 
 	// fill array with values
-	random_fill(_array, _size, _from, _to);
+	// random_fill(_array, _size, _from, _to);
 	// ascending_fill(_array, _size);
-	// descending_fill(_array, _size);	
+	// descending_fill(_array, _size);
+	file_fill(_array, _size, input);
 	cout << "start =\t";
 	print_array(_array, _size);
 
@@ -38,6 +41,7 @@ int main()
 	heap_sort(_array, _size);
 	cout << "end =\t";
 	print_array(_array, _size);
+	file_out(_array, _size, output);
 
 	// end
 	_end = clock() - _start;

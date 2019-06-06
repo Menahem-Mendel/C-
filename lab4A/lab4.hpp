@@ -18,4 +18,5 @@ void swap(int *, int *);
 void heapify(int[], int, int);
 
 // files.cpp
+void file_out(int[], int, char[]);
 void file_fill(int[], int, char[]);

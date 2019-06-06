@@ -29,7 +29,7 @@ void selection_sort(int _array[], int _size)
 	for (i_index = 0; i_index < _size; i_index++)
 	{
 		// вывод на консоль
-		cout << "___________pass " << ++pass << "___________" << endl;
+		cout << "_________________________________pass " << ++pass << endl;
 		print_array(_array, _size);
 
 		min_index = i_index;
@@ -54,15 +54,15 @@ void selection_sort(int _array[], int _size)
 // пример
 // массив _array = 5 4 3 2 1
 
-// ___________pass 1
+// _______________pass 1
 // меньшее = 0 1
 // _pivot  = 2
 // большее = 3 4
-// ___________pass 2 (меньшее из pass 1)
+// _______________pass 2 (меньшее из pass 1)
 // меньшее = _
 // _pivot  = 0
 // большее = 1
-// ___________pass 3 (большее из pass 1) рекурсия на меньшем остановилась поэтому сортируются большие элементы
+// _______________pass 3 (большее из pass 1) рекурсия на меньшем остановилась поэтому сортируются большие элементы
 // меньшее = _
 // _pivot  = 3
 // большее = 4
@@ -93,7 +93,7 @@ void quick_sort(int _array[], int i_left, int i_right)
 	swap(&_array[i_left], &_array[_pivot]); // вернуть средний элемент на место
 
 	// вывод на консоль
-	cout << "___________pass " << ++pass << "___________" << endl
+	cout << "_________________________________pass " << ++pass << endl
 		 << "left subset\t= ";
 	print_array_diapasone(_array, i_left, _pivot);
 	cout << "array[pivot]\t= " << _array[_pivot] << endl
@@ -112,7 +112,7 @@ void heap_sort(int _array[], int _size)
 		heapify(_array, _size, _index);
 
 		// вывод на консоль
-		cout << "___________pass " << ++pass << "___________" << endl;
+		cout << "_________________________________pass " << ++pass << endl;
 		print_array(_array, _size);
 	}
 
@@ -123,12 +123,12 @@ void heap_sort(int _array[], int _size)
 		heapify(_array, _index, 0);
 
 		// вывод на консоль
-		cout << "___________pass " << ++pass << "___________" << endl;
+		cout << "_________________________________pass " << ++pass <<  endl;
 		print_array(_array, _size);
 	}
 }
 
-// heapify строит примаиду где наверху находится самый большой элемент
+// heapify строит бинарную примаиду где наверху находится самый большой элемент
 void heapify(int _array[], int _size, int _index)
 {
 	int _largest = _index;
