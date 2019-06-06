@@ -23,6 +23,12 @@
 
 using namespace std;
 
+struct Node
+{
+	int data;
+	struct Node *next;
+};
+
 int main()
 {
 	// variable initialization
@@ -42,7 +48,7 @@ int main()
 
 	// заполнение массива
 	// random_fill(_array, _size, min_element, max_element); // рандомно
-	ascending_fill(_array, _size);						 // по возрастанию
+	ascending_fill(_array, _size); // по возрастанию
 	// descending_fill(_array, _size); 						 // по убыванию
 
 	file_out(_array, _size, input);
