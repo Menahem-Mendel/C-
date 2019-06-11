@@ -7,22 +7,55 @@ using namespace std;
 int main()
 {
 	node_t *_head = NULL;
-	int index;
 
-	index = 0;
+	int index,
+		choice,
+		number;
 
-	append_node(&_head, 6);
-	append_node(&_head, 5);
-	append_node(&_head, 4);
-	append_node(&_head, 3);
-	append_node(&_head, 2);
-	append_node(&_head, 1);
+	cout << "welcome" << endl;
 
-	print_list(_head);
+	while (choice != 6)
+	{
+		cout << "1: add node to list" << endl;
+		cout << "2: remove node from list" << endl;
+		cout << "3: remove list" << endl;
+		cout << "4: print list" << endl;
+		cout << "5: swap min and max nodes" << endl;
+		cout << "6: exit" << endl;
 
-	remove_node(&_head, 5);
+		cout << "enter: ";
+		cin >> choice;
 
-	print_list(_head);
+		switch (choice)
+		{
+		case 1:
+			cout << "number: ";
+			cin >> number;
+			_head = prepend_node(_head, number);
+			break;
+		case 2:
+			cout << "index: ";
+			cin >> index;
+			remove_node(&_head, 1);
+		case 3:
+			remove_list(&_head);
+			break;
+		case 4:
+			cout << "list: ";
+			print_list(_head);
+			break;
+		case 5:
+			swap_nodes(_head);
+			break;
+		case 6:
+			swap_nodes(_head);
+			cout << "goodbye!!!";
+			break;
+		default:
+			cout << "error: please enter again" << endl;
+			break;
+		}
+	}
 
 	return 0;
 }

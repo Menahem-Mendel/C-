@@ -1,8 +1,43 @@
 #include <iostream>
+#include <climits>
 
 #include "lab3.hpp"
 
 using namespace std;
+
+// Реализовать алгоритм, который находит минимальный и максимальный элементы списка.
+// Минимальный элемент переставляет в начало списка, максимальный - в конец списка.
+// Количество элементов в списке не должна меняться.
+void swap_nodes(node_t *_card)
+{
+    int min,
+        max;
+
+    node_t *min_card = new node_t;
+    node_t *max_card = new node_t;
+
+    min = INT_MAX;
+    max = INT_MIN;
+
+    while (_card != NULL)
+    {
+        if (_card->data < min)
+        {
+            min = _card->data;
+            min_card = _card;
+        }
+
+        if (_card->data > max)
+        {
+            max = _card->data;
+            max_card = _card;
+        }
+
+        _card = _card->next;
+    }
+
+    swap(min_card->data, max_card->data);
+}
 
 void print_list(node_t *_head)
 {
@@ -14,70 +49,88 @@ void print_list(node_t *_head)
     cout << endl;
 }
 
-// добавить в начало списка
-void append_node(node_t **_head, int new_data)
+node_t *prepend_node(node_t *_head, int new_data)
 {
-    node_t *new_node = new node_t;
+    if (_head != NULL)
+    {
+        node_t *new_node = new node_t;
 
-    new_node->data = new_data;
-    new_node->next = *_head;
+        new_node->data = new_data;
+        new_node->next = _head;
 
-    *_head = new_node;
+        _head = new_node;
+    }
+    else
+    {
+        _head = create_node(NULL, new_data);
+    }
+
+    return _head;
 }
 
-// добавить в начало списка
+node_t *create_node(node_t *next, int data)
+{
+    node_t *new_node = new node_t;
+    if (new_node == NULL)
+    {
+        printf("Error creating a new node.\n");
+        exit(0);
+    }
+    new_node->data = data;
+    new_node->next = next;
+
+    return new_node;
+}
+
 void remove_node(node_t **_card, int index)
 {
-    node_t *temp = *_card;
+    node_t *temp = *_card,
+           *prev;
+
     int counter;
+
     counter = 0;
 
-    while (counter != index)
+    if (temp != NULL && counter == index)
     {
-        if (temp->next == NULL)
-        {
-            cout << "error: element with index " << index << " not exists" << endl;
-            return;
-        }
+        *_card = temp->next;
+        delete temp;
+        return;
+    }
 
+    while (temp != NULL && counter != index)
+    {
+        prev = temp;
         temp = temp->next;
         counter++;
     }
 
-    *_card = temp;
+    if (temp == NULL)
+        return;
 
-    if ((*_card)->next != NULL)
-    {
-        (*_card) = (*_card)->next;
-    }
-    else
-    {
-        (*_card) = NULL;
-    }
+    prev->next = temp->next;
+
+    delete temp;
 }
 
-// добавить в конец списка
-// void append_node(node_t **_head, int new_data)
-// {
-//     node_t *new_node = new node_t;
+void remove_list(node_t **_head)
+{
+    node_t *current = *_head,
+           *next;
 
-//     new_node->data = new_data;
-//     new_node->next = NULL;
+    while (current != NULL)
+    {
+        next = current->next;
+        delete current;
+        current = next;
+    }
 
-//     if (*_head == NULL)
-//     {
-//         *_head = new_node;
-//         return;
-//     }
-//     else
-//     {
-//         while (*_head->next != NULL)
-//             *_head = _head->next;
+    *_head = NULL;
+}
 
-//         *_head->next = new_node;
-//     }
-// }
-
-// void insert_node(node_t *_head, int new_data, int position)
-// {
-// }
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    a = b;
+    *b = temp;
+}
