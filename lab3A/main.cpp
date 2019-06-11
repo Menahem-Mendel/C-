@@ -32,27 +32,34 @@ int main()
 			cout << "number: ";
 			cin >> number;
 			_head = prepend_node(_head, number);
+			cout << endl;
 			break;
 		case 2:
 			cout << "index: ";
 			cin >> index;
 			remove_node(&_head, 1);
+			cout << endl;
+			break;
 		case 3:
 			remove_list(&_head);
+			cout << "the list was successfully deleted.\n"
+				 << endl;
 			break;
 		case 4:
 			cout << "list: ";
 			print_list(_head);
+			cout << endl;
 			break;
 		case 5:
 			swap_nodes(_head);
+			cout << endl;
 			break;
 		case 6:
 			swap_nodes(_head);
 			cout << "goodbye!!!";
 			break;
 		default:
-			cout << "error: please enter again" << endl;
+			cout << "error: please enter again." << endl;
 			break;
 		}
 	}
