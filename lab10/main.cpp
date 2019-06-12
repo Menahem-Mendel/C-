@@ -11,25 +11,41 @@ int main()
 	char *strB[STRINGSIZE];
 
 	int i;
+
 	for (i = 0; i < STRINGSIZE; i++)
 	{
-		strA[i] = new char[WORDSIZE];
+		strA[i] = array_constructor(strA[i], WORDSIZE);
 	}
 	for (i = 0; i < STRINGSIZE; i++)
 	{
-		strB[i] = new char[WORDSIZE];
+		strB[i] = array_constructor(strB[i], WORDSIZE);
 	}
 
-	fill_array(strA);
-	fill_array(strB);
+	fill_array(strA, STRINGSIZE, WORDSIZE);
+	fill_array(strB, STRINGSIZE, WORDSIZE);
 
-	// strA[2] = "hello";
+	print_2darray(strA, STRINGSIZE);
+	print_2darray(strB, STRINGSIZE);
 
-	// strB[0] = "hi";
+	for (i = 1; i < STRINGSIZE && *strA[i] != '\0' && *strB[i] != '\0'; i++)
+	{
+		if ((i + 1) % 2 == 0)
+		{
+			swap_word(&strA[i], &strB[i]);
+		}
+	}
 
-	cout << strA[0] << endl;
+	print_2darray(strA, STRINGSIZE);
+	print_2darray(strB, STRINGSIZE);
 
-	cout << strB[0] << endl;
+	for (i = 0; i < STRINGSIZE; i++)
+	{
+		delete[] strA[i];
+	}
+	for (i = 0; i < STRINGSIZE; i++)
+	{
+		delete[] strB[i];
+	}
 
 	return 0;
 }
