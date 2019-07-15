@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-
+	// 1
 	char *strA[STRINGSIZE];
 	char *strB[STRINGSIZE];
 
@@ -24,6 +24,8 @@ int main()
 	fill_array(strA, STRINGSIZE, WORDSIZE);
 	fill_array(strB, STRINGSIZE, WORDSIZE);
 
+	cout << "before" << endl;
+
 	print_2darray(strA, STRINGSIZE);
 	print_2darray(strB, STRINGSIZE);
 
@@ -34,6 +36,8 @@ int main()
 			swap_word(&strA[i], &strB[i]);
 		}
 	}
+
+	cout << "after" << endl;
 
 	print_2darray(strA, STRINGSIZE);
 	print_2darray(strB, STRINGSIZE);
@@ -46,6 +50,9 @@ int main()
 	{
 		delete[] strB[i];
 	}
+	cout << endl;
+
+	// 2
 
 	return 0;
 }

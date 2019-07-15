@@ -60,3 +60,17 @@ void print_2darray(char *line[], int row)
 	}
 	cout << endl;
 }
+
+void STRCAT(char result[], const char was[])
+{
+    int x = 0;
+    while (result[x] != '\0')
+    {
+        x++;
+    }
+    for (int i=0; was[i] != '\0'; i++)
+    { 
+        result[x++] = was[i];
+    }
+    result[x] = '\0';
+}

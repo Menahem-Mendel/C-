@@ -8,3 +8,5 @@ void fill_array(char *[], int, int);
 char *array_constructor(char *, int);
 void swap_word(char **, char **);
 void print_2darray(char *[], int);
+void STRCAT(char[], const char[]);
+void STRCSPN(const char *, const char *);
